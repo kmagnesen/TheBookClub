@@ -19,7 +19,6 @@
 @property (nonatomic) NSArray *filteredFriends;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSManagedObjectContext *moc;
-@property NSArray *addFriends;
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
@@ -65,7 +64,7 @@
     }];
 
     UIAlertAction *okAction = [UIAlertAction
-                               actionWithTitle:@"Okay"
+                               actionWithTitle:@"Add New Friend"
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction *action)
                                {
@@ -83,6 +82,19 @@
     }];
 }
 
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+
+    if([inputText length] != 0)
+    {
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
 
 #pragma mark ------------ Search Bar Functionality ---------------------
 
@@ -114,6 +126,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue profile:(id)profile {
     if ([segue.identifier isEqualToString:@"addFriendSegue"]) {
+        AddFriendTableViewController *friendsTVC = segue.destinationViewController;
+        friendsTVC.title = @"Friend's List";
     }
 }
 
