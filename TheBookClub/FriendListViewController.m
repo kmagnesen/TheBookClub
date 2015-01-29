@@ -13,12 +13,15 @@
 #import "Friend.h"
 #import "Book.h"
 
-@interface FriendListViewController () <UITableViewDataSource, UITabBarDelegate>
+@interface FriendListViewController () <UITableViewDataSource, UITabBarDelegate, UISearchBarDelegate>
 
 @property (nonatomic) NSArray *friends;
+@property (nonatomic) NSArray *filteredFriends;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSManagedObjectContext *moc;
 @property NSArray *addFriends;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+
 
 @end
 
@@ -26,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    _searchBar.delegate = self;
 
     self.moc = [AppDelegate appDelegate].managedObjectContext;
     [self alertView];
@@ -39,6 +44,8 @@
 
 - (void)loadFriends {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Friend"];
+    NSSortDescriptor *friendSorter = [[NSSortDescriptor alloc]initWithKey:@"name" ascending:YES];
+    request.sortDescriptors = [NSMutableArray arrayWithObject:friendSorter];
     self.friends = [self.moc executeFetchRequest:request error:nil];
 
     id error;
@@ -47,6 +54,50 @@
     }
     [self.tableView reloadData];
 }
+
+#pragma mark ------------ Add An Unlisted Friend ---------------------
+
+- (IBAction)onPlusButtonTapped:(UIBarButtonItem *)sender {
+    UIAlertController *alertcontroller = [UIAlertController alertControllerWithTitle:@"Add An Unlisted Friend" message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    [alertcontroller addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        nil;
+    }];
+
+    UIAlertAction *okAction = [UIAlertAction
+                               actionWithTitle:@"Okay"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action)
+                               {
+                                   UITextField *nameTextField = alertcontroller.textFields.firstObject;
+                                   Friend *friend = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:self.moc];
+                                   friend.name = nameTextField.text;
+                                   [self.moc save:nil];
+                                   [self loadFriends];
+                               }];
+
+    [alertcontroller addAction:okAction];
+
+    [self presentViewController:alertcontroller animated:YES completion:^{
+        nil;
+    }];
+}
+
+
+#pragma mark ------------ Search Bar Functionality ---------------------
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"name contains[c] %@", searchText];
+    self.filteredFriends = [self.friends filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+
+#pragma mark ------------ Segue To Friend's Profile ---------------------
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"profileSegue"]) {
@@ -59,6 +110,7 @@
     }
 }
 
+#pragma mark ------------ Segue To Add Friends List ---------------------
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue profile:(id)profile {
     if ([segue.identifier isEqualToString:@"addFriendSegue"]) {
@@ -75,6 +127,9 @@
 
     [alert show];
 }
+
+#pragma mark ------------ UITableViewCell Delegate and Data Source ---------------------
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.friends.count;

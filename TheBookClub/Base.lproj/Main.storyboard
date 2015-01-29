@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Friend List View Controller-->
+        <!--Friends-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="FriendListViewController" sceneMemberID="viewController">
@@ -21,9 +21,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="77V-5a-TLV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" id="all-NJ-RBt">
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="E6I-gh-m90">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
@@ -74,18 +74,33 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="G73-o1-D1c">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ilg-GR-uoj">
+                    <navigationItem key="navigationItem" title="Friends" id="G73-o1-D1c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="cKb-5C-5UE">
+                            <connections>
+                                <action selector="onPlusButtonTapped:" destination="vXZ-lx-hvc" id="cDf-t7-Tcn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="family" id="Ilg-GR-uoj">
                             <connections>
                                 <segue destination="YBz-5b-tbY" kind="show" identifier="addFriendSegue" id="0Pt-w5-BvC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="E6I-gh-m90" id="7NL-uX-De7"/>
+                        <outlet property="searchDisplayController" destination="T9q-wI-TRH" id="Jst-Ge-HQN"/>
                         <outlet property="tableView" destination="77V-5a-TLV" id="cBB-xr-U17"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="T9q-wI-TRH">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="UWd-v9-jlu"/>
+                        <outlet property="searchContentsController" destination="vXZ-lx-hvc" id="35D-iL-VbT"/>
+                        <outlet property="searchResultsDataSource" destination="vXZ-lx-hvc" id="LDI-ih-fVM"/>
+                        <outlet property="searchResultsDelegate" destination="vXZ-lx-hvc" id="8au-Ir-aO0"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1362" y="-533"/>
         </scene>
@@ -254,6 +269,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="profileLabel" destination="g9T-02-lhE" id="00B-5u-iVj"/>
                         <outlet property="tableView" destination="ime-9f-S7N" id="6Bd-PI-MmO"/>
                     </connections>
                 </viewController>
@@ -310,6 +326,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="family" width="40" height="40"/>
         <image name="plus" width="90" height="75"/>
     </resources>
 </document>

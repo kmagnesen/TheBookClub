@@ -17,6 +17,7 @@
 @property NSManagedObjectContext *moc;
 @property (nonatomic) NSArray *books;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UILabel *profileLabel;
 
 @end
 
@@ -29,8 +30,14 @@
     self.moc = [AppDelegate appDelegate].managedObjectContext;
 }
 
--(void) setBooks:(NSArray *)books{
+- (void) setBooks:(NSArray *)books{
     _books = books;
+    [self.tableView reloadData];
+}
+
+- (void)loadBooks{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Book"];
+    self.books = [self.moc executeFetchRequest:request error:nil];
     [self.tableView reloadData];
 }
 
