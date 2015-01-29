@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "FriendListViewController.h"
 #import "AddFriendTableViewController.h"
+#import "ProfileViewController.h"
 #import "Friend.h"
 #import "Book.h"
 
@@ -27,6 +28,7 @@
     [super viewDidLoad];
 
     self.moc = [AppDelegate appDelegate].managedObjectContext;
+    [self alertView];
     [self loadFriends];
 }
 
@@ -48,27 +50,30 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"profileSegue"]) {
-        <#statements#>
+
+        ProfileViewController *profileVC = segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        Friend *friendProfile = self.friends[indexPath.row];
+        profileVC.friendProfile = friendProfile;
+        profileVC.title = friendProfile.name;
     }
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
-    if ([identifier isEqualToString:@"addFriendSegue"]) {
-        BOOL segueShouldOccur = YES;
-        if (segueShouldOccur) {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                         initWithTitle:@"First Rule of Book Club:"
-                                         message:@"You Do Not Talk About Book Club!"
-                                         delegate:nil
-                                         cancelButtonTitle:@"OK"
-                                         otherButtonTitles:nil];
 
-            [alert show];
-
-            return YES;
-        }
+- (void)prepareForSegue:(UIStoryboardSegue *)segue profile:(id)profile {
+    if ([segue.identifier isEqualToString:@"addFriendSegue"]) {
     }
-    return NO;
+}
+
+- (void)alertView {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"First Rule of Book Club:"
+                          message:@"You Do Not Talk About Book Club!"
+                          delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+
+    [alert show];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

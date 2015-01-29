@@ -42,7 +42,7 @@
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 
         self.friendsArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&connectionError];
-        NSLog(@"%@", self.friendsArray);
+//        NSLog(@"%@", self.friendsArray);
         [self.tableView reloadData];
     }];
 }
@@ -60,6 +60,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addFriendCell" forIndexPath:indexPath];
     cell.textLabel.text = self.friendsArray[indexPath.row];
 
+    if (cell.selected == YES) {
+        [cell setSelected:YES animated:YES];
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    } else {
+        [cell setSelected:NO animated:NO];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+
     return cell;
 }
 
@@ -72,6 +80,9 @@
         Friend *friends = [NSEntityDescription insertNewObjectForEntityForName:@"Friend" inManagedObjectContext:self.moc];
         friends.name = [self.friendsArray objectAtIndex:indexPath.row];
         [self.moc save:nil];
+    } else {
+        [cell setSelected:NO animated:NO];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
 }
 

@@ -18,6 +18,7 @@
 		F91D5FD41A7980F8000CE1CD /* Book.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D5FD31A7980F8000CE1CD /* Book.m */; };
 		F91D5FD71A7980F9000CE1CD /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D5FD61A7980F9000CE1CD /* Friend.m */; };
 		F91D5FDA1A7984D5000CE1CD /* AddFriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D5FD91A7984D5000CE1CD /* AddFriendTableViewController.m */; };
+		F91D5FDD1A79CC05000CE1CD /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F91D5FDC1A79CC05000CE1CD /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		F91D5FD61A7980F9000CE1CD /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		F91D5FD81A7984D5000CE1CD /* AddFriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendTableViewController.h; sourceTree = "<group>"; };
 		F91D5FD91A7984D5000CE1CD /* AddFriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendTableViewController.m; sourceTree = "<group>"; };
+		F91D5FDB1A79CC05000CE1CD /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = ../ProfileViewController.h; sourceTree = "<group>"; };
+		F91D5FDC1A79CC05000CE1CD /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = ../ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,18 +97,12 @@
 			children = (
 				F91D5FAD1A79804F000CE1CD /* AppDelegate.h */,
 				F91D5FAE1A79804F000CE1CD /* AppDelegate.m */,
-				F91D5FB31A79804F000CE1CD /* FriendListViewController.h */,
-				F91D5FB41A79804F000CE1CD /* FriendListViewController.m */,
-				F91D5FD81A7984D5000CE1CD /* AddFriendTableViewController.h */,
-				F91D5FD91A7984D5000CE1CD /* AddFriendTableViewController.m */,
+				F91D5FDF1A79CC32000CE1CD /* View Controllers */,
 				F91D5FB61A79804F000CE1CD /* Main.storyboard */,
 				F91D5FB91A79804F000CE1CD /* Images.xcassets */,
 				F91D5FBB1A79804F000CE1CD /* LaunchScreen.xib */,
 				F91D5FB01A79804F000CE1CD /* TheBookClub.xcdatamodeld */,
-				F91D5FD51A7980F9000CE1CD /* Friend.h */,
-				F91D5FD61A7980F9000CE1CD /* Friend.m */,
-				F91D5FD21A7980F8000CE1CD /* Book.h */,
-				F91D5FD31A7980F8000CE1CD /* Book.m */,
+				F91D5FDE1A79CC18000CE1CD /* Core Data Managers */,
 				F91D5FA91A79804E000CE1CD /* Supporting Files */,
 			);
 			path = TheBookClub;
@@ -135,6 +132,30 @@
 				F91D5FC71A79804F000CE1CD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F91D5FDE1A79CC18000CE1CD /* Core Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F91D5FD51A7980F9000CE1CD /* Friend.h */,
+				F91D5FD61A7980F9000CE1CD /* Friend.m */,
+				F91D5FD21A7980F8000CE1CD /* Book.h */,
+				F91D5FD31A7980F8000CE1CD /* Book.m */,
+			);
+			name = "Core Data Managers";
+			sourceTree = "<group>";
+		};
+		F91D5FDF1A79CC32000CE1CD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F91D5FB31A79804F000CE1CD /* FriendListViewController.h */,
+				F91D5FB41A79804F000CE1CD /* FriendListViewController.m */,
+				F91D5FD81A7984D5000CE1CD /* AddFriendTableViewController.h */,
+				F91D5FD91A7984D5000CE1CD /* AddFriendTableViewController.m */,
+				F91D5FDB1A79CC05000CE1CD /* ProfileViewController.h */,
+				F91D5FDC1A79CC05000CE1CD /* ProfileViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +260,7 @@
 			files = (
 				F91D5FDA1A7984D5000CE1CD /* AddFriendTableViewController.m in Sources */,
 				F91D5FD41A7980F8000CE1CD /* Book.m in Sources */,
+				F91D5FDD1A79CC05000CE1CD /* ProfileViewController.m in Sources */,
 				F91D5FAF1A79804F000CE1CD /* AppDelegate.m in Sources */,
 				F91D5FAC1A79804F000CE1CD /* main.m in Sources */,
 				F91D5FD71A7980F9000CE1CD /* Friend.m in Sources */,

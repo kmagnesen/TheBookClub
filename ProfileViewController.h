@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ProfileViewController.h
 //  TheBookClub
 //
 //  Created by Kyle Magnesen on 1/28/15.
@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Book;
-@interface FriendListViewController : UIViewController
 
-@property Book *book;
+@class Friend;
+@interface ProfileViewController : UIViewController
+
+@property Friend *friendProfile;
 
 @end
-
