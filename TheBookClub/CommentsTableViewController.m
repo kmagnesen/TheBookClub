@@ -7,7 +7,7 @@
 //
 
 #import "CommentsTableViewController.h"
-#import "ProfileViewController.h"
+#import "BookListViewController.h"
 #import "AppDelegate.h"
 #import "FriendListViewController.h"
 #import "Friend.h"

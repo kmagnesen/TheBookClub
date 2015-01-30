@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 MobileMakers. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "BookListViewController.h"
 #import "AppDelegate.h"
 #import "FriendListViewController.h"
 #import "Friend.h"
 #import "Book.h"
 #import "CommentsTableViewController.h"
 
-@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface BookListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property NSManagedObjectContext *moc;
 @property (nonatomic) NSArray *books;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation ProfileViewController
+@implementation BookListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,6 +107,13 @@
 
 }
 
+#pragma mark ---------- Add UserComments ----------
+
+- (IBAction)onAddCommentTapped:(UIBarButtonItem *)sender {
+    
+}
+
+
 #pragma mark ----------UITableViewCell DataSource And Delegate------------
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -140,7 +147,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-        ProfileViewController *commentsTVC = segue.destinationViewController;
+        BookListViewController *commentsTVC = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         Friend *friendProfile = self.books[indexPath.row];
         commentsTVC.friendProfile = friendProfile;

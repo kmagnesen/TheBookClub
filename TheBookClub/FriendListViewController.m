@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "FriendListViewController.h"
 #import "AddFriendTableViewController.h"
-#import "ProfileViewController.h"
+#import "BookListViewController.h"
 #import "Friend.h"
 #import "Book.h"
 
@@ -114,7 +114,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"profileSegue"]) {
 
-        ProfileViewController *profileVC = segue.destinationViewController;
+        BookListViewController *profileVC = segue.destinationViewController;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         Friend *friendProfile = self.friends[indexPath.row];
         profileVC.friendProfile = friendProfile;

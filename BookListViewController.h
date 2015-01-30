@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class Friend;
-@interface ProfileViewController : UIViewController
+@interface BookListViewController : UIViewController
 
 @property Friend *friendProfile;
 

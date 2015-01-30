@@ -104,15 +104,16 @@
             </objects>
             <point key="canvasLocation" x="-888" y="-533"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Title-->
         <scene sceneID="bKV-tV-l0T">
             <objects>
-                <viewController id="3Se-6u-shV" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="3Se-6u-shV" customClass="BookListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZpE-2C-yuF"/>
                         <viewControllerLayoutGuide type="bottom" id="lgo-gg-VwM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VkS-Bs-jBc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ime-9f-S7N">
@@ -259,17 +260,17 @@
                                 <exclude reference="g9T-02-lhE"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="C6r-Ym-eY7"/>
-                                <exclude reference="Oit-dc-s4E"/>
-                                <exclude reference="vWC-OJ-UbD"/>
-                                <exclude reference="z1W-MD-Xdj"/>
                                 <exclude reference="8d2-Jj-7kz"/>
                                 <exclude reference="NxJ-nd-Ex1"/>
                                 <exclude reference="CUq-QC-Ov4"/>
                                 <exclude reference="kZ0-ps-N6F"/>
+                                <exclude reference="XVV-Sb-OUu"/>
                                 <exclude reference="9lO-To-jeN"/>
                                 <exclude reference="anh-bN-utT"/>
-                                <exclude reference="XVV-Sb-OUu"/>
+                                <exclude reference="C6r-Ym-eY7"/>
+                                <exclude reference="Oit-dc-s4E"/>
+                                <exclude reference="vWC-OJ-UbD"/>
+                                <exclude reference="z1W-MD-Xdj"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -280,20 +281,27 @@
                                 <include reference="g9T-02-lhE"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="C6r-Ym-eY7"/>
-                                <include reference="Oit-dc-s4E"/>
-                                <include reference="vWC-OJ-UbD"/>
-                                <include reference="z1W-MD-Xdj"/>
                                 <include reference="8d2-Jj-7kz"/>
                                 <include reference="NxJ-nd-Ex1"/>
                                 <include reference="CUq-QC-Ov4"/>
                                 <include reference="kZ0-ps-N6F"/>
+                                <include reference="XVV-Sb-OUu"/>
                                 <include reference="9lO-To-jeN"/>
                                 <include reference="anh-bN-utT"/>
-                                <include reference="XVV-Sb-OUu"/>
+                                <include reference="C6r-Ym-eY7"/>
+                                <include reference="Oit-dc-s4E"/>
+                                <include reference="vWC-OJ-UbD"/>
+                                <include reference="z1W-MD-Xdj"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="h8x-3v-HeB">
+                        <barButtonItem key="rightBarButtonItem" title="Add Comment" id="2Nh-Mr-hYs">
+                            <connections>
+                                <action selector="onAddCommentTapped:" destination="3Se-6u-shV" id="QhB-ZU-6gT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileLabel" destination="g9T-02-lhE" id="00B-5u-iVj"/>
                         <outlet property="tableView" destination="ime-9f-S7N" id="6Bd-PI-MmO"/>
@@ -308,6 +316,7 @@
             <objects>
                 <tableViewController id="Zbm-ie-pIB" customClass="CommentsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="NEI-BZ-ClH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
